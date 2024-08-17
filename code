@@ -1,0 +1,15 @@
+from astroquery.sdss import SDSS
+from astropy import coordinates as coords
+
+# Define the coordinates (RA and Dec)
+ra = 150.0  # example RA in degrees
+dec = 2.0   # example Dec in degrees
+
+# Create a SkyCoord object
+sky_coord = coords.SkyCoord(ra, dec, unit='deg', frame='icrs')
+
+# Query the SDSS database
+result = SDSS.query_region(sky_coord, radius='2 arcmin', photoobj_fields=['ra', 'dec', 'u', 'g', 'r', 'i', 'z'])
+
+# Print the results
+print(result)
